@@ -5,6 +5,8 @@ import com.roshan.entity.Game;
 import com.roshan.entity.Player;
 import com.roshan.repository.GameRepository;
 import com.roshan.repository.PlayerRepository;
+import com.roshan.services.GameService;
+import com.roshan.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,15 +22,21 @@ public class PlayerController {
     @Autowired
     GameRepository gameRepository;
 
+    @Autowired
+    private final PlayerService playerService;
+
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
+
     @GetMapping
     List<Player> getAllPlayers(){
-       return playerRepository.findAll();
+       return playerService.getAllPlayers();
     }
 
     @PostMapping
     Player createPlayer(@RequestBody Player player){
-
-       return playerRepository.save(player);
+       return playerService.save(player);
     }
 
 

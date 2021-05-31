@@ -2,8 +2,8 @@ package com.roshan.controller;
 
 import com.roshan.entity.Game;
 import com.roshan.entity.Player;
-import com.roshan.repository.GameRepository;
 import com.roshan.repository.PlayerRepository;
+import com.roshan.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,28 +16,24 @@ public class GameController {
     private PlayerRepository playerRepository;
 
     @Autowired
-    private GameRepository gameRepository;
+    private final GameService gameService;
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
 
     @GetMapping
     List<Game> getAllGames(){
-        return gameRepository.findAll();
+        return gameService.getAllGames();
     }
     @PostMapping
     Game createGame(@RequestBody Game game){
-        return gameRepository.save(game);
+        return gameService.save(game);
     }
 
     @PostMapping("/play")
     Game playGame(@RequestBody Game game){
-
-        game.setIsUserWon(true);
-        Game games1 = gameRepository.save(game);
-
-        Player player = playerRepository.findById(game.getPlayerId()).get();
-
-        games1.setPlayer(player);
-        return gameRepository.save(games1);
-
+        return gameService.play(game);
     }
 
 }
