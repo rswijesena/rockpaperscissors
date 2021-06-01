@@ -1,0 +1,39 @@
+package com.roshan.controller;
+
+import com.roshan.entity.Game;
+import com.roshan.entity.Player;
+import com.roshan.repository.PlayerRepository;
+import com.roshan.services.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/game")
+public class GameController {
+    @Autowired
+    private PlayerRepository playerRepository;
+
+    @Autowired
+    private final GameService gameService;
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
+
+    @GetMapping
+    List<Game> getAllGames(){
+        return gameService.getAllGames();
+    }
+    @PostMapping
+    Game createGame(@RequestBody Game game){
+        return gameService.save(game);
+    }
+
+    @PostMapping("/play")
+    Game playGame(@RequestBody Game game){
+        return gameService.play(game);
+    }
+
+}
