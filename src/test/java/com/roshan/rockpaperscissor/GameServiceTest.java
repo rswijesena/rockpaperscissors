@@ -22,7 +22,9 @@ class GameServiceTest {
 	private GameRepository gameRepository;
 	@Mock
 	private PlayerRepository playerRepository;
+	@Mock
 	private GameService underTestGame;
+	@Mock
 	private PlayerService underTestPlayer;
 
 
@@ -57,16 +59,24 @@ class GameServiceTest {
 				ArgumentCaptor.forClass(Game.class);
 		verify(gameRepository).save(gameArgumentCaptor.capture());
 
-		Game capturedStudent = gameArgumentCaptor.getValue();
-		assertThat(capturedStudent).isEqualTo(game);
+		Game gameArg = gameArgumentCaptor.getValue();
+		assertThat(gameArg).isEqualTo(game);
 
 	}
 
 	@Test
 	void canPlayGame() {
 
-//		Game game = new Game(1L,"R","R");
-//		underTestGame.play(game);
+		//when
+		Game game = new Game(1L,"R","R");
+		underTestGame.play(game);
+		//then
+		ArgumentCaptor<Game> gameArgumentCaptor =
+				ArgumentCaptor.forClass(Game.class);
+		verify(gameRepository).save(gameArgumentCaptor.capture());
+
+		Game gameArg = gameArgumentCaptor.getValue();
+		assertThat(gameArg).isEqualTo(game);
 
 	}
 

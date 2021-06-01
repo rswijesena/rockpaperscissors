@@ -92,11 +92,7 @@ public class GameService  {
         game.setComputerShape(gameComputerInput.toString());
         game.setPlayerShape(gameUserInput.toString());
 
-        Game savedGame = gameRepository.save(game);
-
-        Player player = playerRepository.findById(game.getPlayerId()).get();
-        savedGame.setPlayer(player);
-        return gameRepository.save(savedGame);
+        return gameRepository.save(game);
     }
 
     public GAMERESULTS getResults(){
