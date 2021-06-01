@@ -105,6 +105,9 @@ This application currenlty has 3 APIs,
 
 HTTP Post request with basic auth
 
+Username apiuser
+Password abc123
+
 Post Request Body
 
 
