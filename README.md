@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # rockpaperscissors
-=======
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -229,7 +227,3 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
-
-
-
->>>>>>> 74cce1c423b2c8846b0a038d05ce97b53a69f8a1
