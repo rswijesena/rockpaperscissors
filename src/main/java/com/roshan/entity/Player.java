@@ -3,9 +3,11 @@ package com.roshan.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.roshan.services.GameAttributes;
 
 import javax.persistence.*;
 import java.util.Set;
+import com.roshan.services.GameAttributes.*;
 
 
 /**
@@ -32,6 +34,15 @@ public class Player {
     @OneToMany(mappedBy = "player")
     private Set<Game> games;
 
+    public Player(){
+
+    }
+
+    public Player(Long id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
