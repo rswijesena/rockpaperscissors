@@ -28,6 +28,8 @@
   </p>
 </p>
 
+Working Project URL - http://rockpaperscissor-env-latets.eba-wzp2v5ym.ap-southeast-2.elasticbeanstalk.com/
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -112,7 +114,7 @@ Password abc123
 Post Request Body
 
 
-http://localhost:8787/player
+http://localhost:8081/rps/v1/player
 
 {
     "name" :"rosha1_wijesena",
@@ -130,70 +132,63 @@ Successfull response would give you below response
 
 2. Play Rock Paper Scissor
 
-http://localhost:8787/game/play
+http://localhost:8081/rps/v1/game/play
 
 HTTP Post request protected by basic auth
 
 HTTP Post Request, Here you should pass user id created in the previous step and you can pass your choic for "R" for Rock "P" for Paper or Scissor "S"
 
 {
-    "playerId" : 1,
+    "player" : {
+        "id" :1
+    },
     "playerShape" : "R"
+    
 }
 
 Sample Response 
-
 {
-    "id": 3,
-    "playerId": 1,
+    "id": 1,
+    "player": {
+        "id": 1,
+        "name": null,
+        "email": null
+    },
     "playerShape": "ROCK",
-    "gameResults": "win",
-    "computerShape": "SCISSORS"
+    "gameResults": "draw",
+    "computerShape": "ROCK"
 }
 
 You can see your results of the game with Computer move and your choice.
 
 3. Get game stats
 
-http://localhost:8787/game
+http://localhost:8081/rps/v1/games
 
 HTTP Get request with basic auth protected. With this endpoint you would see your game results.
 
 [
     {
         "id": 1,
-        "playerId": 1,
+        "player": {
+            "id": 1,
+            "name": "roshan",
+            "email": "roshan@gmail.com"
+        },
         "playerShape": "ROCK",
         "gameResults": "lose",
         "computerShape": "PAPER"
     },
     {
         "id": 2,
-        "playerId": 1,
-        "playerShape": "ROCK",
+        "player": {
+            "id": 1,
+            "name": "roshan",
+            "email": "roshan@gmail.com"
+        },
+        "playerShape": "PAPER",
         "gameResults": "lose",
-        "computerShape": "PAPER"
-    },
-    {
-        "id": 3,
-        "playerId": 1,
-        "playerShape": "ROCK",
-        "gameResults": "win",
         "computerShape": "SCISSORS"
-    },
-    {
-        "id": 4,
-        "playerId": 1,
-        "playerShape": "ROCK",
-        "gameResults": "draw",
-        "computerShape": "ROCK"
-    },
-    {
-        "id": 5,
-        "playerId": 1,
-        "playerShape": "ROCK",
-        "gameResults": "lose",
-        "computerShape": "PAPER"
     }
 ]
 ```
