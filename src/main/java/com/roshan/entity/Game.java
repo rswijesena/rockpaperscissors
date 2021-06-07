@@ -1,7 +1,7 @@
 package com.roshan.entity;
 
 import javax.persistence.*;
-import java.util.Optional;
+import java.util.List;
 
 @Entity
 public class Game {
@@ -10,19 +10,17 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long playerId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "player_id")
     private Player player;
 
     public void setPlayer(Player player) {
         this.player = player;
     }
 
-    public Game(Long id, Long playerId, Player player, String playerShape, String gameResults, String computerShape) {
+    public Game(Long id, Player player, String playerShape, String gameResults, String computerShape) {
         this.id = id;
-        this.playerId = playerId;
         this.player = player;
         this.playerShape = playerShape;
         this.gameResults = gameResults;
@@ -51,7 +49,6 @@ public class Game {
     }
 
     public Game(Long playerId, String playerShape, String computerShape) {
-        this.playerId = playerId;
         this.playerShape = playerShape;
         this.computerShape = computerShape;
     }
@@ -68,7 +65,6 @@ public class Game {
         this.gameResults = gameResults;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -78,16 +74,10 @@ public class Game {
     }
 
     public Game(Long playerId, String playerShape) {
-        this.playerId = playerId;
         this.playerShape = playerShape;
     }
 
-    public Long getPlayerId() {
-        return playerId;
+    public Player getPlayer() {
+        return player;
     }
-
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
-    }
-
 }

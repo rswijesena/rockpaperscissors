@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/player")
+@RequestMapping("/rps/v1")
 public class PlayerController {
 
     @Autowired
@@ -29,12 +29,12 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @GetMapping
+    @GetMapping("/players")
     List<Player> getAllPlayers(){
        return playerService.getAllPlayers();
     }
 
-    @PostMapping
+    @PostMapping("/player")
     Player createPlayer(@RequestBody Player player){
        return playerService.save(player);
     }

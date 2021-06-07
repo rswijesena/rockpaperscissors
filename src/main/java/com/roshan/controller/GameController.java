@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/game")
+@RequestMapping("/rps/v1")
 public class GameController {
     @Autowired
     private PlayerRepository playerRepository;
@@ -22,16 +22,16 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping
+    @GetMapping("/games")
     List<Game> getAllGames(){
         return gameService.getAllGames();
     }
-    @PostMapping
+    @PostMapping("/game")
     Game createGame(@RequestBody Game game){
         return gameService.save(game);
     }
 
-    @PostMapping("/play")
+    @PostMapping("/game/play")
     Game playGame(@RequestBody Game game){
         return gameService.play(game);
     }

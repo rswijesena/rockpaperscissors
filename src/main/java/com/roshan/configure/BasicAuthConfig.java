@@ -28,8 +28,8 @@ public class BasicAuthConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/game/**").hasRole("admin")
-                .antMatchers("/player/**").hasRole("admin")
+                .antMatchers("/rps/v1/**").hasRole("admin")
+
                 .and().httpBasic();
     }
 

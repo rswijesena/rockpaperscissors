@@ -31,7 +31,8 @@ public class Player {
     private String email;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "player")
+    @OneToMany
+    @JoinColumn(name="player_id")
     private Set<Game> games;
 
     public Player(){

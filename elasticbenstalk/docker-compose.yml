@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  backend:
+    image: "roshan86web/rps:latest"
+    ports:
+      - "80:8081"
+    restart: "always"

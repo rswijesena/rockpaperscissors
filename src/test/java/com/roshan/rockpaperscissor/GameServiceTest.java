@@ -7,6 +7,7 @@ import com.roshan.repository.PlayerRepository;
 import com.roshan.services.GameService;
 import com.roshan.services.PlayerService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
@@ -51,7 +52,7 @@ class GameServiceTest {
 		underTestPlayer.save(player);
 		//when
 		Game game = new Game(1L,"R");
-		game.setPlayerId(player.getId());
+		//game.setPlayerId(player.getId());
 		underTestGame.save(game);
 
 		//then
@@ -79,7 +80,4 @@ class GameServiceTest {
 		assertThat(gameArg).isEqualTo(game);
 
 	}
-
-
-
 }
