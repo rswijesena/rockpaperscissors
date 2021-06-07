@@ -90,12 +90,12 @@ To get a local copy up and running follow these simple steps.
    ```
 2. Install MVN packages
    ```sh
-   mvn clean install
+   ./mvnw clean install -P build-frontend -P jib-push-to-local -P  jib-push-to-dockerhub  -Dapp.image.tag=latest
    ```
-3. Docker
+3. Docker application runs in 8081
    ```sh
-   docker pull roshan86web/rockpaperscissor_image
-   docker run -p 8787:8080  roshan86web/rockpaperscissor_image
+   docker pull roshan86web/rps
+   docker run --rm -p 8081:8081 roshan86web/rps
    ```
 
 
